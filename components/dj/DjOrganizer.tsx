@@ -114,8 +114,4 @@ export function DjOrganizer() {
       </div>
     </div>
   );
-`
-
-git remote add origin https://github.com/amberyan-ctrl/Flowlist.git
-git branch -M main
-git push -u origin main
+}

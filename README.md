@@ -1,6 +1,6 @@
-# DJ Set List Organizer
+# Flowlist - Rekordbox Library Organizer and Set List Generator
 
-A beginner-friendly single-page app to manage a track library and build DJ set lists.
+A single-page app to manage a track library and build DJ set lists.
 
 **Stack:** Next.js, TypeScript, Tailwind CSS
 

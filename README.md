@@ -7,7 +7,7 @@ I built Flowlist to help organize the songs in my Rekordbox so I can pull togeth
 
 ## Current Status
 
-Current status: REACT State
+Current status: All data lives in **React state** — no database yet.
 
 
 **Stack:** Next.js, TypeScript, Tailwind CSS
@@ -39,7 +39,6 @@ All data lives in **React state** — no database yet.
 - Transition notes per track
 - Export set as Markdown
 
-All data lives in **React state** — no database yet.
 
 ## Project structure
 

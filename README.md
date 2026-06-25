@@ -5,6 +5,9 @@ I built it as an MVP for turning a Rekordbox-style music library into a faster p
 
 I built Flowlist to help organize the songs in my Rekordbox so I can pull together setlists on the fly, make transition notes, and expedite prepping for events like a wedding, activation, or birthday party. This app was designed for DJs at any skill level who are prepping for paid gigs or events. It was built using Codex, Cursor, and Claudeto accelerate scaffolding, component iteration, and TypeScript debugging, while making product decisions around DJ workflow and set planning.
 
+<img width="1370" height="920" alt="Screenshot 2026-06-25 at 3 02 06 PM" src="https://github.com/user-attachments/assets/822ec873-8d0a-44ab-8da4-96f57009abf4" />
+
+
 ## Current Status
 
 Current status: All data lives in **React state** — no database yet.

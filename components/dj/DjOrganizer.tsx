@@ -20,6 +20,9 @@ export function DjOrganizer() {
   const [filters, setFilters] = useState<TrackFilters>(emptyFilters);
   const [setName, setSetName] = useState("My Set");
   const [setTracks, setSetTracks] = useState<SetTrackItem[]>([]);
+  const [agentInput, setAgentInput] = useState("");
+  const [agentResult, setAgentResult] = useState<string | null>(null);
+  const [isCapturing, setIsCapturing] = useState(false);
 
   const filteredTracks = useMemo(
     () => filterTracks(MOCK_TRACKS, filters),
@@ -74,6 +77,42 @@ export function DjOrganizer() {
     setSetTracks([]);
   }
 
+  async function captureSetIdea() {
+    const cleanInput = agentInput.trim();
+
+    if (!cleanInput) return;
+
+    setIsCapturing(true);
+    setAgentResult(null);
+
+    try {
+      const response = await fetch("/api/agents/capture", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          input: cleanInput,
+          context: {
+            setName,
+            currentTrackCount: setTracks.length,
+            availableTrackCount: MOCK_TRACKS.length,
+          },
+        }),
+      });
+
+      const data = await response.json();
+
+      const firstTask = data.tasks?.[0];
+
+      setAgentResult(firstTask?.title ?? cleanInput);
+    } catch {
+      setAgentResult(cleanInput);
+    } finally {
+      setIsCapturing(false);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div>
@@ -85,6 +124,42 @@ export function DjOrganizer() {
           as Markdown.
         </p>
       </div>
+
+      <section className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="space-y-3">
+          <div>
+            <h2 className="text-lg font-medium">Capture set idea</h2>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              Describe a messy DJ set idea and the agent will turn it into a draft.
+            </p>
+          </div>
+
+          <textarea
+            value={agentInput}
+            onChange={(event) => setAgentInput(event.target.value)}
+            placeholder="Example: Start with warm amapiano, move into afro house around 122 BPM, then end with something high energy."
+            className="min-h-24 w-full rounded-lg border border-zinc-300 bg-white p-3 text-sm outline-none focus:border-zinc-500 dark:border-zinc-700 dark:bg-zinc-900"
+          />
+
+          <button
+            type="button"
+            onClick={captureSetIdea}
+            disabled={isCapturing || !agentInput.trim()}
+            className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-950"
+          >
+            {isCapturing ? "Capturing..." : "Capture with Agent"}
+          </button>
+
+          {agentResult ? (
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm dark:border-zinc-800 dark:bg-zinc-900">
+              <p className="font-medium">Captured draft</p>
+              <p className="mt-1 text-zinc-700 dark:text-zinc-300">
+                {agentResult}
+              </p>
+            </div>
+          ) : null}
+        </div>
+      </section>
 
       <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
         <div className="space-y-4">

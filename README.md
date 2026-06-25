@@ -3,19 +3,17 @@
 Flowlist helps DJs organize tracks, filter by musical attributes, build set lists, write transition notes, and export a clean set plan.
 I built it as an MVP for turning a Rekordbox-style music library into a faster planning workflow for DJ sets. 
 
+<img width="1370" height="920" alt="Screenshot 2026-06-25 at 3 02 06 PM" src="https://github.com/user-attachments/assets/822ec873-8d0a-44ab-8da4-96f57009abf4" />
+
 ## Why I Built This
 I built Flowlist to help organize the songs in my Rekordbox so I can pull together setlists on the fly, make transition notes, and expedite prepping for events like a wedding, activation, or birthday party. This app was designed for DJs at any skill level who are prepping for paid gigs or events. It was built using Codex, Cursor, and Claude to accelerate scaffolding, component iteration, and TypeScript debugging, while making product decisions around DJ workflow and set planning.
 
 ## Next Steps
 Import Rekordbox files, persist libraries with SQLite, add compatibility scoring for BPM/key transitions, and generate suggested set sequences based on energy curve and genre constraints.
 
-<img width="1370" height="920" alt="Screenshot 2026-06-25 at 3 02 06 PM" src="https://github.com/user-attachments/assets/822ec873-8d0a-44ab-8da4-96f57009abf4" />
-
-
 ## Current Status
 
 Current status: All data lives in **React state** — no database yet.
-
 
 **Stack:** Next.js, TypeScript, Tailwind CSS
 

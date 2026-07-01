@@ -28,21 +28,21 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Features (v1)
 
--     Import Rekordbox XML/CSV
+- Import Rekordbox XML/CSV
 - Persist saved sets
 - Save multiple playlists
+- Build a set: add, remove, reorder (up/down buttons)
 - Suggest compatible transitions by BPM/key/energy
 - Export to Markdown/CSV
-- Add AI-generated transition notes or set-flow suggestions
+- AI-generated transition notes or set-flow suggestions
 
 All data lives in **React state** — no database yet.
 
 ## Roadmap - P1/P2
-- Mock track library with BPM, key, genre, energy, and tags
 - Search and filter controls
-- Build a set: add, remove, reorder (up/down buttons)
 - Transition notes per track
 - Export set as Markdown
+- Build a set
 
 
 ## Project structure
